@@ -11,5 +11,41 @@ knitr::opts_chunk$set(echo = FALSE)
 # Learn more about creating websites with Distill at:
 # https://rstudio.github.io/distill/website.html
 
+library(tidyverse)
+library(ggthemes)
+data <- read.csv("data/world-happiness-report-2021.csv") %>% 
+  select(ï..Country.name, Freedom.to.make.life.choices, Healthy.life.expectancy)
+
+names(data)[1] <- "country"
+names(data)[2] <- "freedom"
+names(data)[3] <- "life_expectancy"
+
 ```
+
+# main findings
+
+Higher life expectancy creates more freedom to make life choices.
+
+```{r}
+data %>% 
+  #filter(country %in% c("Mexico", "France", "Vietnam", "China", "Sweden")) %>% 
+  ggplot() +
+  aes(y = freedom,
+      x = life_expectancy) +
+  geom_point() +
+  labs(y = "Freedom",
+       x = "Life Expectancy") +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect() +
+  NULL
+
+
+x = reorder(genre, genre, function(x) length(x))
+
+
+
+```
+
+
 
